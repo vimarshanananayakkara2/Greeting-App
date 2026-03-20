@@ -7,23 +7,19 @@ const PORT = 3000;
 
 let username = "";
 
-// middleware
 app.use(express.urlencoded({ extended: true }));
 
-// GET home page
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
-// POST request to receive name
 app.post("/submit", (req, res) => {
 
-    username = req.body.username;   // store name in variable
+    username = req.body.username;   
 
-    res.redirect("/greet");         // redirect to GET route
+    res.redirect("/greet");         
 });
 
-// GET request to display name
 app.get("/greet", (req, res) => {
 
     let filePath = path.join(__dirname, "views", "greeting.html");
